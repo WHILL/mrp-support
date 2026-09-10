@@ -1,0 +1,34 @@
+name: Link check
+
+# The English and Japanese pages carry the same URLs. This catches the case where
+# one language is updated and the other is left pointing at a dead link.
+
+on:
+  pull_request:
+    paths:
+      - "**/*.md"
+      - ".github/ISSUE_TEMPLATE/**"
+      - ".github/workflows/link-check.yml"
+  schedule:
+    - cron: "0 2 * * 1"
+  workflow_dispatch:
+
+jobs:
+  lychee:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --no-progress
+            --max-retries 3
+            --accept 200,206,429
+            "**/*.md"
+            ".github/ISSUE_TEMPLATE/*.yml"
+          fail: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

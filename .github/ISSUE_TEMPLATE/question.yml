@@ -1,0 +1,45 @@
+name: Question / 質問
+description: Anything technical about the MRP — how to use it, what the specification means, or something that is not working. / MRP に関する技術的なこと全般。使い方、仕様の解釈、動作しない事象など。
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Cannot power on? Start here → [Troubleshooting: cannot power on](https://github.com/WHILL/mrp-support/blob/main/docs/troubleshooting/power.en.md)**
+        That page also lists what each charger indicator and battery LED indication means.
+
+        ---
+
+        **電源が入らない場合は、まずこちら → [電源が入らないとき](https://github.com/WHILL/mrp-support/blob/main/docs/troubleshooting/power.md)**
+        充電ランプ・バッテリー LED の表示の意味も、そのページに記載しています。
+
+  - type: dropdown
+    id: product
+    attributes:
+      label: Product / 製品
+      options:
+        - Model CR2
+        - Wheeled Robot Base / ロボット台車
+        - Electrical System Kit / 電装系キット
+        - Omni Platform / オムニプラットフォーム
+        - Not specific to one product / 特定の製品によらない
+        - Model CR (support ended / サポート終了)
+    validations:
+      required: true
+
+  - type: input
+    id: purchased
+    attributes:
+      label: Purchased / 購入時期
+      description: As far as you know — a rough year is fine, or simply how long the unit has been with you. / 分かる範囲で結構です。おおよその年でも、「いつからあるか」だけでも構いません。
+      placeholder: around 2023 / unknown / 2025年9月頃 / 数年前からある
+    validations:
+      required: true
+
+  - type: textarea
+    id: details
+    attributes:
+      label: Your question / ご質問内容
+      description: For a fault, please also include the steps to reproduce and what you expected instead. Repairs and replacement parts are not a technical support topic — please write to mrp.contact@whill.inc instead. / 不具合の場合は、再現手順と期待していた動作も添えてください。修理や部品購入はテクニカルサポートの対象外です。mrp.contact@whill.inc へご連絡ください。
+    validations:
+      required: true

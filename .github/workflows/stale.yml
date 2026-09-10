@@ -1,22 +1,37 @@
 name: Close inactive issues
+
+# Issues with no response for 90 days are closed: a warning at 60 days, then
+# closed 30 days later.
+#
+# workflow_dispatch is kept because GitHub disables scheduled workflows
+# automatically after 60 days of repository inactivity. Run it manually to
+# check that the configuration works.
+
 on:
   schedule:
     - cron: "30 1 * * *"
+  workflow_dispatch:
 
 jobs:
   close-issues:
     runs-on: ubuntu-latest
     permissions:
       issues: write
-      pull-requests: write
     steps:
-      - uses: actions/stale@v5
+      - uses: actions/stale@v9
         with:
-          days-before-issue-stale: 30
-          days-before-issue-close: 14
+          days-before-issue-stale: 60
+          days-before-issue-close: 30
           stale-issue-label: "stale"
-          stale-issue-message: "This issue is stale because it has been open for 30 days with no activity."
-          close-issue-message: "This issue was closed because it has been inactive for 14 days since being marked as stale."
+          stale-issue-message: |
+            This issue has had no activity for 60 days. It will be closed in 30 days unless there is a further comment.
+
+            60日間更新がないため stale としてマークしました。このままコメントがない場合、30日後に Close されます。
+          close-issue-message: |
+            Closed after 90 days without a response. If the question is still open, please leave a comment and we will reopen it.
+
+            90日間応答がないため Close しました。未解決の場合は、コメントいただければ再度 Open いたします。
+          # Pull requests are left to people.
           days-before-pr-stale: -1
           days-before-pr-close: -1
           repo-token: ${{ secrets.GITHUB_TOKEN }}

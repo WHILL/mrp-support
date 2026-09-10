@@ -1,89 +1,86 @@
-# Model CR Series Technical Support
+<p align="center">
+  <img src="images/whill_logo.svg" alt="WHILL" width="100">
+</p>
+<h1 align="center">
+  WHILL Mobile Robot Platform テクニカルサポート
+</h1>
 
-[EN]
-Technical questions about Model CR series are welcome in this repository [Issues](https://github.com/WHILL/Model_CR_Technical_Support/issues).
-Please submit your question in the New Issue section of Issues and a WHILL support member will answer it.
-(**Note:** "Model CR series" here refers to Model CR, Model CR2, Wheeled Robot Base, Electrical System Kit, and Omni-Platform)
+<p align="center">
+  <a href="README.en.md">English</a> · <b>日本語</b>
+</p>
 
-Inquiries can be made in English or Japanese.
+<p align="center">
+  WHILL 株式会社が提供する <b>WHILL Mobile Robot Platform（MRP）</b> のテクニカルサポート窓口です。
+</p>
 
-Inquiries to Issues can be about Model CR series hardware or general communication through [the libraries](https://github.com/WHILL/Model_CR_Technical_Support/blob/main/README.md#libraries).
-Please include "Model CR" or "Model CR2" in the body of the issue so that we can identify the device you are inquiring about.
+<p align="center">
+  <a href="docs/troubleshooting/power.md"><b>電源が入らない</b></a> ·
+  <a href="../../issues/new/choose"><b>質問する</b></a> ·
+  <a href="https://whill-mrp.notion.site/WHILL-f975baf4015e4eebbb243a7d331efb0a"><b>製品ページ</b></a>
+</p>
 
-If the issue has been resolved, please close it.
-
-Comments on each library are also welcome at the repository of each library.
+<p align="center">
+  <img width=22% title="WHILL Model CR2" src="images/model_cr2.png">
+  <img width=24% title="ロボット台車" src="images/wheeled_robot_base.png">
+  <img width=24% title="オムニプラットフォーム" src="images/omni_platform.png">
+</p>
 
 ---
 
-[JP]
-Model CRシリーズに関する技術的な質問は、このリポジトリ[Issues](https://github.com/WHILL/Model_CR_Technical_Support/issues)で受け付けています。
-IssuesのNew Issueで質問を起票してください。WHILLのサポートメンバーが回答致します。
-（**注釈：**『Model CRシリーズ』は、Model CR、Model CR2、ロボット台車、電装系キット、オムニプラットフォームを指します）
+> [!TIP]
+> **電源が入らない場合は、まずこちら → [電源が入らない（確認フローチャート）](docs/troubleshooting/power.md)**
 
-お問い合わせは英語でも日本語でも構いません。
+MRP に関する技術的なご質問は、このリポジトリの [Issues](../../issues) で受け付けています。
 
-Issuesへのお問い合わせは、Model CRシリーズのハードウェアに関するものや、[ライブラリ](https://github.com/WHILL/Model_CR_Technical_Support/blob/main/README.md#libraries)を通じた一般的な通信に関するものが対象です。
-なお、問い合わせ対象のデバイスが分かるように、issueの本文には「Model CR」または「Model CR2」を含めてくださいますようお願いいたします。
-
-問題が解決したIssueはCloseしてください。
-
-各ライブラリに対するコメント・お問い合わせは，各ライブラリのリポジトリで受け付けています。
+修理や部品購入はテクニカルサポートの対象外です。**mrp.contact@whill.inc** へご連絡ください。
 
 
-## Products
+## よくあるお問い合わせ
 
-<img width=22% title="WHILL Model CR2" src="https://github.com/WHILL/Model_CR_Technical_Support/assets/129816934/387a8aac-3808-4727-895d-9857059ee342">
-<img width=24% title="Wheeled Robot Base" src="https://github.com/WHILL/Model_CR_Technical_Support/assets/129816934/6a63ed45-9e0c-40ca-b71c-8dff614af141">
-<img width=24% title="Omni-Platform" src="https://github.com/WHILL/Model_CR_Technical_Support/assets/129816934/4fadb6b7-97f8-438a-9747-c4161dec69b6">
+お問い合わせの多い事象について、確認手順をフローチャートにまとめています。Issue を起票する前に
+一度お試しください。
 
-- [WHILL Model CR2](https://whill.inc/jp/model-cr2)
-- [WHILL Powered Mobility Platform](https://whill-mrp.notion.site/WHILL-f975baf4015e4eebbb243a7d331efb0a)
- <br>(Wheeled Robot Base, Electrical System Kit, Omni-Platform, and WHILL Model CR2)
+| 事象 | |
+|---|---|
+| **電源が入らない**（電源ボタン／シリアル通信とも） | [確認手順](docs/troubleshooting/power.md) |
+| **充電ランプが点灯しない・赤点滅が続く** | [確認手順](docs/troubleshooting/power.md) |
+| **バッテリー LED が青点滅する** | [確認手順](docs/troubleshooting/power.md) |
 
-
-## Communication Specifications
-
-- [Top Page](https://github.com/WHILL/whill_control_system_protocol_specification/blob/master/README.md)
-
-  - Main Part : [WHILL_Control_System_Protocol_Specification.pdf](https://github.com/WHILL/whill_control_system_protocol_specification/blob/master/WHILL_Control_System_Protocol_Specification.pdf)
-
-  - Appendix : [Differences between Model CR and Model CR2](https://github.com/WHILL/whill_control_system_protocol_specification/blob/master/WHILL_Control_System_Protocol_Specification_Appendix.pdf)
-
-  - for Omni-Platform : [WHILL_Control_System_Protocol_Specification_for_Omni_Platform.pdf](https://github.com/WHILL/whill_control_system_protocol_specification/blob/omnipf/WHILL_Control_System_Protocol_Specification_for_Omni_Platform.pdf)
+通信の不具合は、まず [WHILL Serial API Tester](https://whill.github.io/whill-serial-api/cr2/tester/)
+をお試しいただくのが近道です。Chrome / Edge から WHILL と直接通信するため、原因が WHILL 側か、
+お客様のプログラム側かをすぐ確認できます。
 
 
-## Libraries
+## WHILL Serial API
 
-- Python : [pywhill](https://github.com/WHILL/pywhill)
+MRP のシリアル通信インターフェースです。仕様書と、ブラウザで動作するテスターを公開しています。
 
-- Arduino : [whill-sdk-arduino](https://github.com/WHILL/whill-sdk-arduino)
+### → **https://whill.github.io/whill-serial-api/**
 
-- ROS2 (humble) : [ros2_whill](https://github.com/whill-labs/ros2_whill)
+| 製品 | 仕様書 | テスター |
+|---|---|---|
+| [**Model CR2**](https://whill.inc/jp/model-cr2)<br>ロボット台車<br>電装系キット | [cr2/spec/](https://whill.github.io/whill-serial-api/cr2/spec/) | [cr2/tester/](https://whill.github.io/whill-serial-api/cr2/tester/) |
+| **オムニプラットフォーム** | [omni/spec/](https://whill.github.io/whill-serial-api/omni/spec/) | [omni/tester/](https://whill.github.io/whill-serial-api/omni/tester/) |
 
-**注釈 / Note**  
-ROS 1（Melodic）向けの [ros_whill](https://github.com/WHILL/ros_whill) は、ROS 1 が end-of-life（EOL）となったためサポート対象外です（参考リンクのみ）。  
-This repository targets ROS 1 (Melodic) and is **not supported** because ROS 1 has reached end-of-life (EOL); provided for reference only.
+テスターは **Chrome または Edge** が必要です。ダウンロードすればオフラインでも動作し、通信はブラウザと
+WHILL の間のみで行われます。
 
 
-## Tools
+## ライブラリ
 
-- [WHILL Serial Communication Test Tool](https://whill.github.io/Model_CR_Technical_Support/whill_serial_communication_test_tool.html)
-  - [EN] A browser-based tool for testing serial communication with the Model CR series.
-    - 1. Connect a PC (with Chrome or Edge available) to the Model CR series via a USB-RS232C conversion cable.
-    - 2. Access the [Test Tool](https://whill.github.io/Model_CR_Technical_Support/whill_serial_communication_test_tool.html) (it can also be downloaded for offline use).
-    - 3. Press the "Connect" button and select the correct port from the dialog.
-    - 4. Use the buttons on each tab to control the Model CR series.
-      - Basic Functions tab: Power ON/OFF, joystick operation
-      - Speed Profile tab: Check/set speed profile
-      - Custom Command tab: Send arbitrary commands
-    - 5. When finished, press "Disconnect" at the top right.
-  - [JP] ブラウザから、Model CRシリーズとのシリアル通信をテストできるツール
-    - １．PC（Chrome または Edgeが使える）とModel CRシリーズをUSB-R232C変換ケーブルを介して接続する。
-    - ２．[Test Tool](https://whill.github.io/Model_CR_Technical_Support/whill_serial_communication_test_tool.html) にアクセスする（ダウンロードしておくと、オフラインでも使用可）
-    - ３．「Connect」ボタンを押下し、ダイアログから正しいポートを選択する。
-    - ４．各タブにあるボタンを使って、Model CRシリーズを制御できる。
-      - Basic Functions タブ：電源ON/OFF、ジョイスティック操作
-      - Speed Profile タブ：スピードプロファイル確認/設定
-      - Custom Command タブ：任意コマンドの送信
-    - ５．終了時は、右上の「Disconnect」を押下する。
+| 言語 | ライブラリ | 状態 |
+|---|---|---|
+| ROS 2 (Humble) | [ros2_whill](https://github.com/whill-labs/ros2_whill) | サポート中 |
+| Python | [pywhill](https://github.com/WHILL/pywhill) | サポート中 |
+| Arduino | [whill-sdk-arduino](https://github.com/WHILL/whill-sdk-arduino) | サポート中 |
+
+
+## サポート終了
+
+以下はサポートを終了しています。稼働中の機体・環境があるため、参照用に記載しています。
+
+| 項目 | 備考 |
+|---|---|
+| **WHILL Model CR** | サポートを終了しました。後継は Model CR2 です。 |
+| [ros_whill](https://github.com/WHILL/ros_whill)（ROS 1 Melodic） | ROS 1 が EOL のため。[ros2_whill](https://github.com/whill-labs/ros2_whill) をご利用ください。 |
+| [whill_control_system_protocol_specification](https://github.com/WHILL/whill_control_system_protocol_specification) | [WHILL Serial API](https://whill.github.io/whill-serial-api/) に移行しました。PDF は Model CR 向けで、更新していません。 |
