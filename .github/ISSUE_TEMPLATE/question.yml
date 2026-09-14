@@ -40,6 +40,6 @@ body:
     id: details
     attributes:
       label: Your question / ご質問内容
-      description: For a fault, please also include the steps to reproduce and what you expected instead. Repairs and replacement parts are not a technical support topic — please write to mrp.contact@whill.inc instead. / 不具合の場合は、再現手順と期待していた動作も添えてください。修理や部品購入はテクニカルサポートの対象外です。mrp.contact@whill.inc へご連絡ください。
+      description: For a fault, please also include the steps to reproduce and what you expected instead. Repairs and replacement parts are not a technical support topic — please write to mrp.contact@whill.inc instead. / 不具合の場合は、再現手順と期待していた動作も添えてください。修理や部品購入はテクニカルサポートの対象外です。 mrp.contact@whill.inc へご連絡ください。
     validations:
       required: true
