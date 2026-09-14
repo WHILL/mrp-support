@@ -15,7 +15,7 @@
 
 <p align="center">
   <a href="docs/troubleshooting/power.md"><b>電源が入らない</b></a> ·
-  <a href="../../issues/new/choose"><b>質問する</b></a> ·
+  <a href="https://github.com/WHILL/mrp-support/issues/new/choose"><b>質問する</b></a> ·
   <a href="https://whill-mrp.notion.site/WHILL-f975baf4015e4eebbb243a7d331efb0a"><b>製品ページ</b></a>
 </p>
 
@@ -30,7 +30,7 @@
 > [!TIP]
 > **電源が入らない場合は、まずこちら → [電源が入らない（確認フローチャート）](docs/troubleshooting/power.md)**
 
-MRP に関する技術的なご質問は、このリポジトリの [Issues](../../issues) で受け付けています。
+MRP に関する技術的なご質問は、このリポジトリの [Issues](https://github.com/WHILL/mrp-support/issues) で受け付けています。
 
 修理や部品購入はテクニカルサポートの対象外です。**mrp.contact@whill.inc** へご連絡ください。
 
@@ -55,7 +55,7 @@ MRP に関する技術的なご質問は、このリポジトリの [Issues](../
 
 MRP のシリアル通信インターフェースです。仕様書と、ブラウザで動作するテスターを公開しています。
 
-### → **https://whill.github.io/whill-serial-api/**
+### → **[https://whill.github.io/whill-serial-api/](https://whill.github.io/whill-serial-api/)**
 
 | 製品 | 仕様書 | テスター |
 |---|---|---|

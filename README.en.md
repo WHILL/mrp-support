@@ -15,7 +15,7 @@
 
 <p align="center">
   <a href="docs/troubleshooting/power.en.md"><b>Cannot power on</b></a> ·
-  <a href="../../issues/new/choose"><b>Ask a question</b></a> ·
+  <a href="https://github.com/WHILL/mrp-support/issues/new/choose"><b>Ask a question</b></a> ·
   <a href="https://whill-mrp.notion.site/WHILL-Mobile-Robot-Platform-97930066f5f64529bb83883aafef0c3b"><b>Product page</b></a>
 </p>
 
@@ -30,7 +30,7 @@
 > [!TIP]
 > **Cannot power on? Start here → [Cannot power on — flowchart](docs/troubleshooting/power.en.md)**
 
-Technical questions about the MRP are welcome in this repository's [Issues](../../issues).
+Technical questions about the MRP are welcome in this repository's [Issues](https://github.com/WHILL/mrp-support/issues).
 
 Repairs and replacement parts are not a technical support topic — write to
 **mrp.contact@whill.inc** instead.
@@ -56,7 +56,7 @@ once whether the problem is in the WHILL or in your own program.
 
 The serial communication interface of the MRP. Specification and browser-based tester:
 
-### → **https://whill.github.io/whill-serial-api/**
+### → **[https://whill.github.io/whill-serial-api/](https://whill.github.io/whill-serial-api/)**
 
 | Product | Specification | Tester |
 |---|---|---|
