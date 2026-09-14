@@ -17,11 +17,22 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       issues: write
+      # actions: write is deliberately not granted. The action records how far it
+      # got in an Actions cache entry (_state) so that a run stopped by
+      # operations-per-run can resume, and rewriting that entry needs the
+      # permission. Each run therefore warns "Error delete _state: [403]" and
+      # fails to save the cache with a 409. Both are harmless here: the budget
+      # below covers every issue in one run, so there is nothing to resume.
     steps:
-      - uses: actions/stale@v9
+      - uses: actions/stale@v11
         with:
           days-before-issue-stale: 60
           days-before-issue-close: 30
+          # The default of 30 operations is not enough to walk the whole backlog,
+          # and the default order is newest first. Oldest first clears the old
+          # issues before the budget runs out.
+          operations-per-run: 100
+          ascending: true
           stale-issue-label: "stale"
           stale-issue-message: |
             This issue has had no activity for 60 days. It will be closed in 30 days unless there is a further comment.
