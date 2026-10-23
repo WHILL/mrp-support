@@ -7,17 +7,31 @@ Issue を起票する前に、一度お試しください。
 
 Model CR2、ロボット台車、電装系キット、オムニプラットフォームが対象です。
 
+> [!IMPORTANT]
+> **電源ボタンでは起動するのに、シリアル通信では電源が入らない場合**
+> ほとんどが deep sleep です。バッテリーを本体から抜き、**20分以上**待ってから充電済みのバッテリーを
+> 装着してください。deep sleep はバッテリーを抜いて放電させる以外に復帰する方法がなく、
+> 抜いてすぐ挿し直しただけでは復帰しません。
+>
+> 一部の出荷分は、バッテリー残量が 19% 以下になると deep sleep に移行し、シリアル通信に応答しなくなります。
+> 長期間使用していなかった機体で起きやすい状態です。
+
 
 ## フローチャート
 
 ```mermaid
+%%{init: {"htmlLabels": false, "flowchart": {"htmlLabels": false, "wrappingWidth": 400}}}%%
 flowchart TD
     S(["シリアル通信で<br>電源ONできない"]) --> Q1{"電源ボタンで<br>ONできる？"}
 
-    Q1 -->|できる| A1["バッテリーを抜いて<br>20分待機し、充電済み<br>バッテリーを装着する"]
-    Q1 -->|できない| A5["バッテリーを挿し直す<br>挿し込み不足・異物の<br>噛み込みを確認"]
+    Q1 -->|できる| A1["バッテリーを本体から抜く"]
+    Q1 -->|できない| A5["異物の噛み込みを確認し<br>バッテリーを挿し直す"]
 
-    A1 --> Q2{"シリアル通信で<br>電源ONできる？"}
+    A1 --> A7["そのまま20分以上待つ<br>※短いと復帰しません"]
+    A7 --> Q7{"20分以上<br>待った？"}
+    Q7 -->|いいえ| A7
+    Q7 -->|はい| A8["充電済みの<br>バッテリーを装着する"]
+    A8 --> Q2{"シリアル通信で<br>電源ONできる？"}
     Q2 -->|できる| R1(["解決<br>deep sleep 遷移"])
     Q2 -->|できない| Q3{"WHILL Serial API Tester<br>を使えば動く？"}
 
@@ -47,8 +61,8 @@ flowchart TD
     classDef cause fill:#fff3cd,stroke:#d39e00,color:#3d2f00
     classDef solved fill:#d1e7dd,stroke:#0f5132,color:#0b2e21
     classDef contact fill:#f8d7da,stroke:#842029,color:#4d1319
-    class S,Q1,Q2,Q3,Q4,Q5,Q6 check
-    class A1,A3,A4,A5,A6 step
+    class S,Q1,Q2,Q3,Q4,Q5,Q6,Q7 check
+    class A1,A3,A4,A5,A6,A7,A8 step
     class C2,C3,C4,C5,C6 cause
     class R1,R2,A2 solved
     class M1,M2,M3,M4 contact
@@ -56,11 +70,6 @@ flowchart TD
 
 
 **図の見方** — ◇ 確認すること　／　<b>青</b> 操作　／　<b>黄</b> 原因　／　<b>緑</b> 解決　／　<b>赤</b> WHILL へ連絡
-
-> **deep sleep について**
-> 一部の出荷分は、バッテリー残量が 19% 以下になると deep sleep に移行します。この状態の機体は
-> シリアル通信に応答せず、バッテリーを取り外して放電させない限り復帰しません。本体の電源ボタンでは
-> 起動するため、通信だけができない状態として現れます。長期間使用していなかった機体で起きやすい状態です。
 
 > **WHILL Serial API Tester について**
 > Model CR2 / ロボット台車 / 電装系キット — https://whill.github.io/whill-serial-api/cr2/tester/

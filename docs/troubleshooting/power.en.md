@@ -7,17 +7,31 @@ serial interface. Please work through it before opening an issue.
 
 Applies to Model CR2, Wheeled Robot Base, Electrical System Kit and Omni Platform.
 
+> [!IMPORTANT]
+> **If the power button turns the unit on but power-on over the serial interface does not**
+> This is almost always deep sleep. Remove the battery from the unit, wait **at least 20 minutes**,
+> then install a charged battery. Removing the battery long enough to discharge the unit is the only
+> way out of deep sleep; taking the battery out and putting it straight back in does not recover it.
+>
+> Units shipped in certain periods enter deep sleep once the battery level reaches 19% or below, and
+> then stop answering on the serial interface. It is most often seen on units left unused for a long time.
+
 
 ## Flowchart
 
 ```mermaid
+%%{init: {"htmlLabels": false, "flowchart": {"htmlLabels": false, "wrappingWidth": 400}}}%%
 flowchart TD
     S(["Cannot power on<br>over the serial interface"]) --> Q1{"Does the power button<br>turn it on?"}
 
-    Q1 -->|Yes| A1["Remove the battery, wait<br>20 minutes, then install<br>a charged battery"]
-    Q1 -->|No| A5["Reseat the battery<br>Check for a loose fit<br>or a foreign object"]
+    Q1 -->|Yes| A1["Remove the battery<br>from the unit"]
+    Q1 -->|No| A5["Check for a foreign object<br>and reseat the battery"]
 
-    A1 --> Q2{"Does power-on over<br>the serial interface<br>work now?"}
+    A1 --> A7["Leave it out for at least<br>20 minutes<br>* Any shorter will not recover it"]
+    A7 --> Q7{"Have you waited<br>20 minutes or more?"}
+    Q7 -->|No| A7
+    Q7 -->|Yes| A8["Install a<br>charged battery"]
+    A8 --> Q2{"Does power-on over<br>the serial interface<br>work now?"}
     Q2 -->|Yes| R1(["Resolved<br>Was in deep sleep"])
     Q2 -->|No| Q3{"Does the<br>WHILL Serial API Tester<br>work?"}
 
@@ -47,8 +61,8 @@ flowchart TD
     classDef cause fill:#fff3cd,stroke:#d39e00,color:#3d2f00
     classDef solved fill:#d1e7dd,stroke:#0f5132,color:#0b2e21
     classDef contact fill:#f8d7da,stroke:#842029,color:#4d1319
-    class S,Q1,Q2,Q3,Q4,Q5,Q6 check
-    class A1,A3,A4,A5,A6 step
+    class S,Q1,Q2,Q3,Q4,Q5,Q6,Q7 check
+    class A1,A3,A4,A5,A6,A7,A8 step
     class C2,C3,C4,C5,C6 cause
     class R1,R2,A2 solved
     class M1,M2,M3,M4 contact
@@ -56,12 +70,6 @@ flowchart TD
 
 
 **How to read this chart** — ◇ check　／　<b>blue</b> do this　／　<b>yellow</b> cause　／　<b>green</b> resolved　／　<b>red</b> contact WHILL
-
-> **About deep sleep**
-> Units shipped in certain periods enter deep sleep once the battery level reaches 19% or below.
-> Such a unit does not answer on the serial interface and does not recover until the battery has
-> been removed long enough to discharge it. The power button still turns the unit on, so the fault
-> shows up as communication alone failing. It is most often seen on units left unused for a long time.
 
 > **About the WHILL Serial API Tester**
 > Model CR2 / Wheeled Robot Base / Electrical System Kit — https://whill.github.io/whill-serial-api/cr2/tester/
